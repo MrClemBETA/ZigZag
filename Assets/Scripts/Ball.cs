@@ -8,7 +8,6 @@ public class Ball : MonoBehaviour
 
     private Rigidbody rigidbody;
     private bool movingX = true;
-    private bool gameOver = false;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +24,7 @@ public class Ball : MonoBehaviour
             movingX = !movingX;
         }
 
-        if (!gameOver)
+        if (!GameManager.instance.GameOver)
         {
             // Move the ball according to the direction
             if (movingX)
@@ -47,7 +46,7 @@ public class Ball : MonoBehaviour
         if(!Physics.Raycast(transform.position, Vector3.down, 1f))
         {
             rigidbody.useGravity = true;
-            gameOver = true;
+            GameManager.instance.SetGameOver(true);
         }
     }
 }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
+
     public GameObject platform;
 
     private float createPlatformTime = .2f;
@@ -12,6 +14,20 @@ public class GameManager : MonoBehaviour
     private float xPos;
     private float zPos;
     private float scale;
+
+    public bool GameOver { get; private set; }
+
+    void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        } else
+        {
+            Destroy(gameObject);
+        }
+        GameOver = false;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -44,5 +60,10 @@ public class GameManager : MonoBehaviour
         {
             zPos += scale;
         }
+    }
+
+    public void SetGameOver(bool value)
+    {
+        GameOver = value;
     }
 }
