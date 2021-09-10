@@ -9,10 +9,16 @@ public class GameManager : MonoBehaviour
     private float createPlatformTime = .2f;
     private float currentPlatformTime = 0f;
 
+    private float xPos;
+    private float zPos;
+    private float scale;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        xPos = transform.position.x;
+        zPos = transform.position.z;
+        scale = platform.transform.localScale.x;
     }
 
     // Update is called once per frame
@@ -29,6 +35,14 @@ public class GameManager : MonoBehaviour
     private void createPlatform()
     {
         GameObject go = Instantiate(platform);
-        go.transform.position = new Vector3(20, 0, 20);
+        go.transform.position = new Vector3(xPos, transform.position.y, zPos);
+        int direction = Random.Range(0, 2);
+        if(direction == 0)
+        {
+            xPos += scale;
+        } else
+        {
+            zPos += scale;
+        }
     }
 }
