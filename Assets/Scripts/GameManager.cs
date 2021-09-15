@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     public GameObject platform;
+    public GameObject diamond;
 
     private float createPlatformTime = .2f;
     private float currentPlatformTime = 0f;
@@ -43,15 +44,26 @@ public class GameManager : MonoBehaviour
         currentPlatformTime += Time.deltaTime;
         if(currentPlatformTime > createPlatformTime)
         {
-            createPlatform();
+            CreatePlatform();
             currentPlatformTime = 0;
         }
     }
 
-    private void createPlatform()
+    private void CreatePlatform()
     {
+        // Creates a platform
         GameObject go = Instantiate(platform);
         go.transform.position = new Vector3(xPos, transform.position.y, zPos);
+
+        // Randomly create a diamond
+        float value = Random.Range(0f, 1f);
+        if(value < .3f)
+        {
+            GameObject d = Instantiate(diamond);
+            d.transform.position = new Vector3(xPos, d.transform.position.y, zPos);
+        }
+        
+        // Determine Next Position
         int direction = Random.Range(0, 2);
         if(direction == 0)
         {

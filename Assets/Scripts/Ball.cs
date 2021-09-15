@@ -6,13 +6,13 @@ public class Ball : MonoBehaviour
 {
     public float speed;
 
-    private Rigidbody rigidbody;
+    private Rigidbody rbody;
     private bool movingX = true;
 
     // Start is called before the first frame update
     void Start()
     {
-        rigidbody = GetComponent<Rigidbody>();
+        rbody = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -30,12 +30,12 @@ public class Ball : MonoBehaviour
             if (movingX)
             {
                 Vector3 ballSpeed = new Vector3(speed, 0, 0);
-                rigidbody.velocity = ballSpeed;
+                rbody.velocity = ballSpeed;
             }
             else
             {
                 Vector3 ballSpeed = new Vector3(0, 0, speed);
-                rigidbody.velocity = ballSpeed;
+                rbody.velocity = ballSpeed;
             }
         }
 
@@ -45,7 +45,7 @@ public class Ball : MonoBehaviour
         // If our ball is not on a platform, game
         if(!Physics.Raycast(transform.position, Vector3.down, 1f))
         {
-            rigidbody.useGravity = true;
+            rbody.useGravity = true;
             GameManager.instance.SetGameOver(true);
         }
     }
