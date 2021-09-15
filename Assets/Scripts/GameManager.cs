@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         currentPlatformTime += Time.deltaTime;
-        if(currentPlatformTime > createPlatformTime)
+        if(currentPlatformTime > createPlatformTime && !GameOver)
         {
             CreatePlatform();
             currentPlatformTime = 0;

@@ -45,8 +45,17 @@ public class Ball : MonoBehaviour
         // If our ball is not on a platform, game
         if(!Physics.Raycast(transform.position, Vector3.down, 1f))
         {
-            rbody.useGravity = true;
-            GameManager.instance.SetGameOver(true);
+            StartCoroutine(GameOver());
         }
+    }
+
+    private IEnumerator GameOver()
+    {
+        yield return null;
+        rbody.useGravity = true;
+        GameManager.instance.SetGameOver(true);
+
+        yield return new WaitForSeconds(5);
+        Destroy(gameObject);
     }
 }
