@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject platform;
     public GameObject diamond;
+    public GameObject startingPanel;
+    public Text scoreText;
 
     private float createPlatformTime = .2f;
     private float currentPlatformTime = 0f;
@@ -15,6 +18,7 @@ public class GameManager : MonoBehaviour
     private float xPos;
     private float zPos;
     private float scale;
+    private int score = 0;
 
     public bool GameOver { get; private set; }
     public bool GameStart { get; private set; }
@@ -83,11 +87,18 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        startingPanel.SetActive(false);
         GameStart = true;
     }
 
     public bool GameRunning()
     {
         return !GameOver && GameStart;
+    }
+
+    public void AddScore()
+    {
+        score++;
+        scoreText.text = "Score: " + score;
     }
 }

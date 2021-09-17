@@ -20,6 +20,7 @@ public class Diamond : MonoBehaviour
     {
         if(col.tag == "Ball")
         {
+            GameManager.instance.AddScore();
             Destroy(gameObject);
         }
     }
