@@ -16,7 +16,7 @@ public class CameraFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!GameManager.instance.GameOver)
+        if (GameManager.instance.GameRunning())
         {
             transform.position = ball.transform.position + offset;
         }

@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     private float scale;
 
     public bool GameOver { get; private set; }
+    public bool GameStart { get; private set; }
 
     void Awake()
     {
@@ -28,6 +29,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
         GameOver = false;
+        GameStart = false;
     }
 
     // Start is called before the first frame update
@@ -42,7 +44,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         currentPlatformTime += Time.deltaTime;
-        if(currentPlatformTime > createPlatformTime && !GameOver)
+        if(currentPlatformTime > createPlatformTime && GameRunning())
         {
             CreatePlatform();
             currentPlatformTime = 0;
@@ -77,5 +79,15 @@ public class GameManager : MonoBehaviour
     public void SetGameOver(bool value)
     {
         GameOver = value;
+    }
+
+    public void StartGame()
+    {
+        GameStart = true;
+    }
+
+    public bool GameRunning()
+    {
+        return !GameOver && GameStart;
     }
 }

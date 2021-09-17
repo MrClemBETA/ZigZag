@@ -21,10 +21,17 @@ public class Ball : MonoBehaviour
         // Has the mouse been clicked
         if(Input.GetMouseButtonDown(0))
         {
-            movingX = !movingX;
+            if (!GameManager.instance.GameStart)
+            {
+                GameManager.instance.StartGame();
+            }
+            else
+            {
+                movingX = !movingX;
+            }
         }
 
-        if (!GameManager.instance.GameOver)
+        if (GameManager.instance.GameRunning())
         {
             // Move the ball according to the direction
             if (movingX)
