@@ -60,7 +60,7 @@ public class Ball : MonoBehaviour
     {
         yield return null;
         rbody.useGravity = true;
-        GameManager.instance.SetGameOver(true);
+        GameManager.instance.GameIsOver();
 
         yield return new WaitForSeconds(5);
         Destroy(gameObject);

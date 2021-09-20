@@ -9,8 +9,6 @@ public class GameManager : MonoBehaviour
 
     public GameObject platform;
     public GameObject diamond;
-    public GameObject startingPanel;
-    public Text scoreText;
 
     private float createPlatformTime = .2f;
     private float currentPlatformTime = 0f;
@@ -80,14 +78,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void SetGameOver(bool value)
+    public void GameIsOver()
     {
-        GameOver = value;
+        GameOver = true;
+        DisplayManager.instance.endingPanel.SetActive(true);
+        DisplayManager.instance.gameOverScoreText.text = "Score: " + score;
     }
 
     public void StartGame()
     {
-        startingPanel.SetActive(false);
+        DisplayManager.instance.startingPanel.SetActive(false);
         GameStart = true;
     }
 
@@ -99,6 +99,6 @@ public class GameManager : MonoBehaviour
     public void AddScore()
     {
         score++;
-        scoreText.text = "Score: " + score;
+        DisplayManager.instance.scoreText.text = "Score: " + score;
     }
 }
