@@ -193,6 +193,7 @@ GameObject:
   - component: {fileID: 208514511}
   - component: {fileID: 208514510}
   - component: {fileID: 208514509}
+  - component: {fileID: 208514513}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -282,6 +283,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &208514513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208514508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df3b159a9b5741c4d8eeedb2d4b57b3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingPanel: {fileID: 1329036135}
+  endingPanel: {fileID: 943562969}
+  scoreText: {fileID: 764872503}
+  gameOverScoreText: {fileID: 1260571164}
+  highScoreText: {fileID: 1763410570}
 --- !u!1 &219847544
 GameObject:
   m_ObjectHideFlags: 0
@@ -731,7 +749,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &943562970
 RectTransform:
   m_ObjectHideFlags: 0
@@ -752,7 +770,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.0000076294}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -588.5, y: -251.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &943562971
@@ -824,8 +842,6 @@ MonoBehaviour:
   platform: {fileID: 4708609772249212108, guid: 569d6308cebdcfc4a95e30732d63a1a3,
     type: 3}
   diamond: {fileID: 2642450598330860541, guid: 7c8ba60c2c134b94f99075e7d9afbfc3, type: 3}
-  startingPanel: {fileID: 1329036135}
-  scoreText: {fileID: 764872503}
 --- !u!4 &1015532434
 Transform:
   m_ObjectHideFlags: 0
@@ -1137,7 +1153,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1329036136
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1444,7 +1460,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1793489971}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1015532433}
+        m_MethodName: RestartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1793489971

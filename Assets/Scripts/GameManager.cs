@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -17,6 +18,7 @@ public class GameManager : MonoBehaviour
     private float zPos;
     private float scale;
     private int score = 0;
+    private int highScore;
 
     public bool GameOver { get; private set; }
     public bool GameStart { get; private set; }
@@ -40,6 +42,7 @@ public class GameManager : MonoBehaviour
         xPos = transform.position.x;
         zPos = transform.position.z;
         scale = platform.transform.localScale.x;
+        highScore = PlayerPrefs.GetInt("High Score");
     }
 
     // Update is called once per frame
@@ -81,8 +84,14 @@ public class GameManager : MonoBehaviour
     public void GameIsOver()
     {
         GameOver = true;
+        if(score > highScore)
+        {
+            highScore = score;
+            PlayerPrefs.SetInt("High Score", highScore);
+        }
         DisplayManager.instance.endingPanel.SetActive(true);
         DisplayManager.instance.gameOverScoreText.text = "Score: " + score;
+        DisplayManager.instance.highScoreText.text = "High Score: " + highScore;
     }
 
     public void StartGame()
@@ -100,5 +109,10 @@ public class GameManager : MonoBehaviour
     {
         score++;
         DisplayManager.instance.scoreText.text = "Score: " + score;
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene("Scenes/SampleScene");
     }
 }

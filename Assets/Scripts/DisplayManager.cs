@@ -11,6 +11,7 @@ public class DisplayManager : MonoBehaviour
     public GameObject endingPanel;
     public Text scoreText;
     public Text gameOverScoreText;
+    public Text highScoreText;
 
     void Awake()
     {
